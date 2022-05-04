@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta description="">
+		<meta keywords="">
+		<title>Gryzle Invitation</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="http://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+        <link href="http://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+	</head>
+	<body>
+        
+        <script>
+            var pageNum = 1;
+
+            function nextPage() {
+                if (pageNum == 1) {
+                    pageNum = 2;
+                    document.getElementById("page2Inner").style.marginLeft = "25px";
+                    document.getElementById("page2Inner").style.opacity = "0";
+                    
+                    setTimeout(function() {;
+                        document.getElementById("page1").style.visibility = "hidden";
+                        document.getElementById("page2").style.visibility = "visible";
+                        document.getElementById("page2Inner").style.marginLeft = "0px";
+                        document.getElementById("page2Inner").style.opacity = "1";
+                    }, 500);
+                } else if (pageNum == 2) {
+                    pageNum = 2.5;
+                    var scrollView = document.getElementById("scrollContent");
+                    scrollView.scrollTop = scrollView.scrollHeight;
+                    
+                    document.getElementById("rulesButton").innerHTML = "Agree";
+                    
+                } else if (pageNum == 2.5) {
+                    pageNum = 3;
+                    document.getElementById("page3Inner").style.marginLeft = "25px";
+                    document.getElementById("page3Inner").style.opacity = "0";
+                    
+                    setTimeout(function() {
+                        document.getElementById("page2").style.visibility = "hidden";
+                        document.getElementById("page3").style.visibility = "visible";
+                        document.getElementById("page3Inner").style.marginLeft = "0px";
+                        document.getElementById("page3Inner").style.opacity = "1";
+                    }, 500);
+                } else if (pageNum == 3) {
+                    pageNum = 4;
+                    document.getElementById("page4Inner").style.marginLeft = "25px";
+                    document.getElementById("page4Inner").style.opacity = "0";
+                    
+                    setTimeout(function() {
+                        document.getElementById("page3").style.visibility = "hidden";
+                        document.getElementById("page4").style.visibility = "visible";
+                        document.getElementById("page4Inner").style.marginLeft = "0px";
+                        document.getElementById("page4Inner").style.opacity = "1";
+                    }, 500);
+                } else if (pageNum == 4) {
+                    pageNum = 5;
+                    document.getElementById("page5Inner").style.marginLeft = "25px";
+                    document.getElementById("page5Inner").style.opacity = "0";
+                    
+                    setTimeout(function() {
+                        document.getElementById("page4").style.visibility = "hidden";
+                        document.getElementById("page5").style.visibility = "visible";
+                        document.getElementById("page5Inner").style.marginLeft = "0px";
+                        document.getElementById("page5Inner").style.opacity = "1";
+                    }, 500);
+                    
+                    setTimeout(function() {
+                        document.getElementById("checkmarkOuter").innerHTML = `<svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                          <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                          <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>`;
+                    }, 1000);
+                    
+                } else if (pageNum == 5) {
+                    window.open('','_self').close();
+                }
+            }
+            
+            const selectElement = document.getElementById("usernameInput")
+
+            selectElement.addEventListener('change', (event) => {
+              document.getElementById("avatarImage").src = `https://mc-heads.net/body/${document.getElementById("usernameInput").value}`;
+            });
+            
+            function updateSkin() {
+                document.getElementById("avatarImage").src = `https://mc-heads.net/body/${document.getElementById("usernameInput").value}`;
+            };
+
+        </script>
+        
+		<div class="contentBoxOuter" id="page1">
+            <div class="contentBox" id="page1Inner">
+                <div class="contentHeader">
+                    <h1 class="headerText">
+                        You've been invited to become a
+                    </h1>
+                    <img src="assets/gryzleMember.png" class="headerImage" draggable="false">
+                </div>
+                
+                <div class="contentFooter">
+                    <button class="continueButton" onclick="nextPage()">
+                        Accept
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="contentBoxOuter" id="page2" style="visibility: hidden">
+            <div class="contentBox" id="page2Inner">
+                <div class="contentHeader">
+                    <h1 class="headerText">
+                        Please read the following rules
+                    </h1>
+                    <div class="scrollContent" id="scrollContent">
+                        <p class="rulesListItem">
+                            Gryzle SMP is a cooperative server and does not tolerate any griefing, non-consentual PvP, stealing, or trapping. Players are recommended to work together, but are not required to do so.
+                        </p>
+                        <p class="rulesListItem">
+                            Modified or hacked clients are not permitted to be used on Gryzle SMP. This includes bots, autoclicker, x-ray, minimaps, and other tools that provide an unfair advantage over other players.
+                        </p>
+                        <p class="rulesListItem">
+                            Intentionally ruining the experience of other members of the server via lag machines or abusing glitches is strictly forbidden.
+                        </p>
+                        <p class="rulesListItem">
+                            Please be friendly to other players on the server. Using slurs or creating offensive images is not allowed. All content on Gryzle SMP should be SFW, please keep all other content off of the server.
+                        </p>
+                        <p class="rulesListItem">
+                            One you've read and understand all the items listed above, please continue by clicking "Agree."
+                        </p>
+                    </div>
+                </div>
+                <div class="contentFooter">
+                    <button class="continueButton" onclick="nextPage()" id="rulesButton">
+                        Scroll to Bottom
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="contentBoxOuter" id="page3" style="visibility: hidden">
+            <div class="contentBox" id="page3Inner">
+                <div class="contentHeader">
+                    <h1 class="headerText">
+                        Enter your Minecraft: Java Edition Username
+                    </h1>
+                    
+                    <div class="usernameInputOuter">
+                        <input type="text" id="usernameInput" class="usernameInput">
+                        <button class="usernameCheckButton" onclick="updateSkin()">Check</button>
+                    </div>
+                    
+                    <img src="https://mc-heads.net/body/" class="avatarImage" id="avatarImage" draggable="false">
+                    
+                </div>
+                
+                <div class="contentFooter">
+                    <button class="continueButton" onclick="nextPage()">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="contentBoxOuter" id="page4" style="visibility: hidden">
+            <div class="contentBox" id="page4Inner">
+                <div class="contentHeader">
+                    <h1 class="headerText">
+                        Submit the form below with your username
+                    </h1>
+                    
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeMI2XTB5DbJkwxthttBmmCIBB6lf7CHmZDV2r-66aWUZwHNw/viewform" class="googleForm"></iframe>
+                    
+                </div>
+                
+                <div class="contentFooter">
+                    <button class="continueButton" onclick="nextPage()">
+                        I submitted the form
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="contentBoxOuter" id="page5" style="visibility: hidden">
+            <div class="contentBox" id="page5Inner">
+                <div class="contentHeader">
+                    <h1 class="headerText">
+                        That's It!
+                    </h1>
+                    <h2 class="headerText">
+                        You can now close this tab.
+                    </h2>
+                    
+                    <div id="checkmarkOuter" class="checkmarkOuter">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+	</body>
+</html>

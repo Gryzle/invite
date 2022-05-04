@@ -96,7 +96,7 @@ html {
 }
 
 .scrollContent {
-    overflow: scroll;
+    overflow-y: scroll;
     height: 500px;
     margin-left: 20px;
     margin-right: 20px;
